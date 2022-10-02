@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://platformChar_idle.png" type="Texture" id=1]
+[ext_resource path="res://platformChar_walk1.png" type="Texture" id=2]
+[ext_resource path="res://platformChar_jump.png" type="Texture" id=3]
+[ext_resource path="res://platformChar_walk2.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 5.0
+} ]
+
+[node name="player" type="KinematicBody2D"]
+physics_interpolation_mode = 2
+position = Vector2( 65, 157 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 511, 95 )
+scale = Vector2( 1.42318, 1.40104 )
+frames = SubResource( 1 )
+animation = "Idle"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2( 491, 72 )
+polygon = PoolVector2Array( -13, -3, 50, -3, 56, 3, 56, 40, 62, 63, 66, 68, 65, 75, 58, 79, 51, 75, 36, 75, 36, 79, 45, 80, 51, 90, 28, 90, 28, 74, 9, 76, 9, 80, 13, 89, -8, 90, -1, 80, 0, 74, -11, 75, -17, 79, -25, 77, -27, 71, -24, 64, -21, 61, -22, 53, -18, 45, -18, 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 512, 116 )
+current = true
